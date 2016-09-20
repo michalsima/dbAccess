@@ -23,7 +23,7 @@ public class CityDAOImpl implements CityDAO {
 
 	static Logger log = Logger.getLogger(CityDAOImpl.class.getName());
 
-	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	public CityDAOImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
 		this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;

@@ -37,4 +37,19 @@ public class SelectBenchmark {
 		log.info("Got " + countries.size() + " countries.");
 	}
 
+	public void fetchAllCapitals() {
+
+		List<Country> countries = countryDAO.findCountries();
+
+		int capitals = 0;
+		for (Country country : countries) {
+			City capital = cityDAO.fetchCity(country.getCapitalId());
+			if (capital != null) {
+				capitals++;
+			}
+		}
+
+		log.info("Got " + capitals + " capitals for " + countries.size() + " countries.");
+	}
+
 }

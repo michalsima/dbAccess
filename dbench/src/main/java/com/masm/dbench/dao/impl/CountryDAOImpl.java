@@ -13,10 +13,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.masm.dbench.dao.CityDAO;
 import com.masm.dbench.dao.CountryDAO;
 import com.masm.dbench.exceptions.CountryNotFoundException;
-import com.masm.dbench.model.City;
 import com.masm.dbench.model.Country;
 import com.masm.dbench.model.CountryLanguage;
 
@@ -25,11 +23,8 @@ public class CountryDAOImpl implements CountryDAO {
 
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-	private CityDAO _cityDAO;
-
-	public CountryDAOImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate, CityDAO cityDAO) {
+	public CountryDAOImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
 		this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-		_cityDAO = cityDAO;
 	}
 
 	public Country getCountry(String code) throws CountryNotFoundException {
@@ -74,7 +69,6 @@ public class CountryDAOImpl implements CountryDAO {
 				+ " l WHERE l.CountryCode=c.Code AND c.Language=:language";
 
 		List<Country> result = namedParameterJdbcTemplate.query(sql, params, new CountryMapper());
-		
 
 		return result;
 	}
@@ -107,9 +101,7 @@ public class CountryDAOImpl implements CountryDAO {
 			country.setLocalName(rs.getString("LocalName"));
 			country.setGovernmentForm(rs.getString("GovernmentForm"));
 			country.setHeadOfState(rs.getString("HeadOfState"));
-
-			City capital = _cityDAO.fetchCity(rs.getLong("Capital"));
-			country.setCapital(capital);
+			country.setCapitalId(rs.getLong("Capital"));
 
 			return country;
 		}

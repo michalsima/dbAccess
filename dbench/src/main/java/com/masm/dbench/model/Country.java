@@ -16,7 +16,6 @@ public class Country {
 	String governmentForm;
 	String headOfState;
 	Long capitalId;
-	City capital;
 	String code2;
 
 	public String getCode() {
@@ -123,20 +122,12 @@ public class Country {
 		this.headOfState = headOfState;
 	}
 
-	public City getCapital() {
-		return capital;
-	}
-
 	public Long getCapitalId() {
 		return capitalId;
 	}
 
 	public void setCapitalId(Long capitalId) {
 		this.capitalId = capitalId;
-	}
-
-	public void setCapital(City capital) {
-		this.capital = capital;
 	}
 
 	public String getCode2() {

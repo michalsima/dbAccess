@@ -26,17 +26,14 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	
 	<bean id="countryDAO_H2" class="com.masm.dbench.dao.impl.CountryDAOImpl" >
 		<constructor-arg ref="jdbcTemplateH2" />
-		<constructor-arg ref="cityDAO_H2" />
 	</bean>
 	
 	<bean id="countryDAO_Oracle" class="com.masm.dbench.dao.impl.CountryDAOImpl" >
 		<constructor-arg ref="jdbcTemplateOracle" />
-		<constructor-arg ref="cityDAO_Oracle" />
 	</bean>
 	
 	<bean id="countryDAO_MySQL" class="com.masm.dbench.dao.impl.CountryDAOImpl" >
 		<constructor-arg ref="jdbcTemplateMySQL" />
-		<constructor-arg ref="cityDAO_MySQL" />
 	</bean>
 	
 	<!-- BENCHMARKS -->

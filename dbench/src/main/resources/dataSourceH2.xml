@@ -25,7 +25,7 @@
 			<bean class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 				<property name="driverClass" value="org.h2.Driver" />
 				<property name="url"
-					value="jdbc:h2:mem:dataSourceH2;DB_CLOSE_DELAY=-1;MODE=Oracle;TRACE_LEVEL_SYSTEM_OUT=2" />
+					value="jdbc:h2:mem:dataSourceH2;DB_CLOSE_DELAY=-1;MODE=Oracle;TRACE_LEVEL_SYSTEM_OUT=0" />
 				<property name="username" value="sa" />
 				<property name="password" value="" />
 			</bean>

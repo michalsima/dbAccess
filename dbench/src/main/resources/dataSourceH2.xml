@@ -1,0 +1,37 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+        http://www.springframework.org/schema/jdbc     
+        http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<jdbc:embedded-database id="dataSourceH2" type="H2">
+		<jdbc:script location="classpath:sql/world.schema.sql" />
+		<jdbc:script location="classpath:sql/world.content.sql" />
+	</jdbc:embedded-database>
+
+	<bean id="database.dataSourceH2"
+		class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+		<constructor-arg>
+			<bean class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+				<property name="driverClass" value="org.h2.Driver" />
+				<property name="url"
+					value="jdbc:h2:mem:dataSourceH2;DB_CLOSE_DELAY=-1;MODE=Oracle;TRACE_LEVEL_SYSTEM_OUT=2" />
+				<property name="username" value="sa" />
+				<property name="password" value="" />
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<bean id="org.h2.tools.Server-WebServer" class="org.h2.tools.Server"
+		factory-method="createWebServer" depends-on="database.dataSourceH2"
+		init-method="start" lazy-init="false">
+		<constructor-arg value="-web,-webPort,9111" />
+	</bean>
+
+</beans>

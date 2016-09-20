@@ -8,6 +8,8 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	<import resource="dataSourceH2.xml" />
 	<import resource="dataSourceOracle.xml" />
 	
+	<import resource="dataSourceMySQL.xml" />
+	
 	<!-- DAOs -->
 	
 	<bean id="cityDAO_H2" class="com.masm.dbench.dao.impl.CityDAOImpl" >
@@ -18,6 +20,10 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 		<constructor-arg ref="jdbcTemplateOracle" />
 	</bean>
 	
+	<bean id="cityDAO_MySQL" class="com.masm.dbench.dao.impl.CityDAOImpl" >
+		<constructor-arg ref="jdbcTemplateMySQL" />
+	</bean>
+	
 	<bean id="countryDAO_H2" class="com.masm.dbench.dao.impl.CountryDAOImpl" >
 		<constructor-arg ref="jdbcTemplateH2" />
 		<constructor-arg ref="cityDAO_H2" />
@@ -26,6 +32,11 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	<bean id="countryDAO_Oracle" class="com.masm.dbench.dao.impl.CountryDAOImpl" >
 		<constructor-arg ref="jdbcTemplateOracle" />
 		<constructor-arg ref="cityDAO_Oracle" />
+	</bean>
+	
+	<bean id="countryDAO_MySQL" class="com.masm.dbench.dao.impl.CountryDAOImpl" >
+		<constructor-arg ref="jdbcTemplateMySQL" />
+		<constructor-arg ref="cityDAO_MySQL" />
 	</bean>
 	
 	<!-- BENCHMARKS -->
@@ -40,6 +51,10 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 		<property name="countryDAO" ref="countryDAO_Oracle" />
 	</bean>
 	
+		<bean id="selectBenchmarkMySQL" class="com.masm.dbench.SelectBenchmark">
+		<property name="cityDAO" ref="cityDAO_MySQL" />
+		<property name="countryDAO" ref="countryDAO_MySQL" />
+	</bean>
 	
 	<import resource="aop.xml" />
 

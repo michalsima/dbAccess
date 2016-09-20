@@ -32,8 +32,6 @@
 			<version>${aspectj.version}</version>
 		</dependency>
 
-
-
 		<!-- Spring -->
 
 		<dependency>
@@ -61,6 +59,13 @@
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc7</artifactId>
 			<version>12.1.0.1</version>
+		</dependency>
+
+		<!-- MySQLm connector -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
 		</dependency>
 
 

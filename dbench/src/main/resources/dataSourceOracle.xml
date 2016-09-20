@@ -10,14 +10,15 @@
 
 	<bean id="dataSourceOracle"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="username" value="dbench" />
 		<property name="password" value="test" />
-
 	</bean>
 
-
+	<bean id="jdbcTemplateOracle"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="dataSourceOracle" />
+	</bean>
 
 </beans>

@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
@@ -9,6 +11,8 @@
         http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<!-- H2 -->
 
 	<jdbc:embedded-database id="dataSourceH2" type="H2">
 		<jdbc:script location="classpath:sql/world.schema.sql" />
@@ -33,5 +37,11 @@
 		init-method="start" lazy-init="false">
 		<constructor-arg value="-web,-webPort,9111" />
 	</bean>
+
+	<bean id="jdbcTemplateH2"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="dataSourceH2" />
+	</bean>
+
 
 </beans>

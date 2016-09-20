@@ -12,6 +12,8 @@
 		<dbh2.version>1.4.187</dbh2.version>
 		<derby.version>10.11.1.1</derby.version>
 		<oracle.version>10.2.0.4.0</oracle.version>
+		<junit.version>4.8.2</junit.version>
+		<aspectj.version>1.8.9</aspectj.version>
 	</properties>
 
 	<dependencies>
@@ -19,9 +21,18 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- AOP -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+
+
 
 		<!-- Spring -->
 

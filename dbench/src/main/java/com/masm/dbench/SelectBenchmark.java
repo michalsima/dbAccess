@@ -59,4 +59,19 @@ public class SelectBenchmark {
 		log.info("Got " + cities.size() + " cities ordered by " + orderBy);
 	}
 
+	public void fechtCountriesByLanguage(String language) {
+
+		List<Country> countries = countryDAO.findCountriesByLanguage(language);
+
+		log.info("Got " + countries.size() + " countries with language " + language);
+	}
+
+	public void fechtOneCountry(String code) {
+
+		Country country = countryDAO.fetchCountry(code);
+
+		log.info("Got " + (country != null ? "1" : "0") + " countries with code " + code);
+
+	}
+
 }

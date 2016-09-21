@@ -5,6 +5,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Application {
 
+	private static final int ITERATIONS = 1;
+
 	public static void main(String[] args) {
 
 		@SuppressWarnings("resource")
@@ -14,11 +16,9 @@ public class Application {
 		SelectBenchmark selectBenchmarkOracle = (SelectBenchmark) context.getBean("selectBenchmarkOracle");
 		SelectBenchmark selectBenchmarkMySQL = (SelectBenchmark) context.getBean("selectBenchmarkMySQL");
 
-		TableHelper.setupTable(4, 5);
+		TableHelper.setupTable(4, 6);
 
-		int iterations = 10;
-
-		for (int i = 0; i < iterations; i++) {
+		for (int i = 0; i < ITERATIONS; i++) {
 
 			TableHelper.setPosition(0);
 
@@ -50,12 +50,19 @@ public class Application {
 			selectBenchmarkOracle.fechtAllCities("Population", false);
 			selectBenchmarkMySQL.fechtAllCities("Population", false);
 
-			System.out.println("*********** Get list of cities **************");
-			TableHelper.addValue2Table("Cities again");
+			System.out.println("*********** Get list of countires by language **************");
+			TableHelper.addValue2Table("Countries by language");
 
-			selectBenchmarkH2.fechtAllCities();
-			selectBenchmarkOracle.fechtAllCities();
-			selectBenchmarkMySQL.fechtAllCities();
+			selectBenchmarkH2.fechtCountriesByLanguage("Spanish");
+			selectBenchmarkOracle.fechtCountriesByLanguage("Spanish");
+			selectBenchmarkMySQL.fechtCountriesByLanguage("Spanish");
+
+			System.out.println("*********** Get country by code **************");
+			TableHelper.addValue2Table("Countries by code");
+
+			selectBenchmarkH2.fechtOneCountry("POL");
+			selectBenchmarkOracle.fechtOneCountry("POL");
+			selectBenchmarkMySQL.fechtOneCountry("POL");
 		}
 
 		TableHelper.drawTable(new String[] { "", "H2", "Oracle", "MySQL" });

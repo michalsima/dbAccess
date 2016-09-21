@@ -16,7 +16,6 @@ import org.springframework.stereotype.Repository;
 import com.masm.dbench.dao.CountryDAO;
 import com.masm.dbench.exceptions.CountryNotFoundException;
 import com.masm.dbench.model.Country;
-import com.masm.dbench.model.CountryLanguage;
 
 @Repository
 public class CountryDAOImpl implements CountryDAO {
@@ -27,6 +26,7 @@ public class CountryDAOImpl implements CountryDAO {
 		this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
 	}
 
+	@Override
 	public Country getCountry(String code) throws CountryNotFoundException {
 
 		Country result = fetchCountry(code);
@@ -39,6 +39,7 @@ public class CountryDAOImpl implements CountryDAO {
 
 	}
 
+	@Override
 	public Country fetchCountry(String code) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("code", code);
@@ -49,6 +50,7 @@ public class CountryDAOImpl implements CountryDAO {
 		return result.size() > 0 ? result.get(0) : null;
 	}
 
+	@Override
 	public Country findCountryByName(String name) {
 
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -60,19 +62,21 @@ public class CountryDAOImpl implements CountryDAO {
 		return result;
 	}
 
-	public List<Country> findCountriesByLanguage(CountryLanguage language) {
+	@Override
+	public List<Country> findCountriesByLanguage(String language) {
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("language", language);
 
-		String sql = "SELECT * FROM " + COUNTRY_TABLE + " c, " + COUNTRYLANGUAGE_TABLE
-				+ " l WHERE l.CountryCode=c.Code AND c.Language=:language";
+		String sql = "SELECT c.* FROM " + COUNTRY_TABLE + " c JOIN " + COUNTRYLANGUAGE_TABLE
+				+ " l ON l.CountryCode=c.Code WHERE l.Language=CAST(:language as CHAR(30))";
 
 		List<Country> result = namedParameterJdbcTemplate.query(sql, params, new CountryMapper());
 
 		return result;
 	}
 
+	@Override
 	public List<Country> findCountries() {
 
 		String sql = "SELECT * FROM " + COUNTRY_TABLE;
@@ -83,6 +87,7 @@ public class CountryDAOImpl implements CountryDAO {
 
 	private final class CountryMapper implements RowMapper<Country> {
 
+		@Override
 		public Country mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 			Country country = new Country();

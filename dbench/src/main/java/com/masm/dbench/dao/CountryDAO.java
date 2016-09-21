@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.masm.dbench.exceptions.CountryNotFoundException;
 import com.masm.dbench.model.Country;
-import com.masm.dbench.model.CountryLanguage;
 
 public interface CountryDAO {
 
@@ -16,6 +15,6 @@ public interface CountryDAO {
 
 	List<Country> findCountries();
 
-	List<Country> findCountriesByLanguage(CountryLanguage language);
+	List<Country> findCountriesByLanguage(String language);
 
 }

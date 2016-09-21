@@ -14,6 +14,8 @@ public interface CityDAO {
 
 	List<City> findCities();
 
+	List<City> findCities(String orderBy, boolean asc);
+
 	List<City> findCitiesByName(String name);
 
 	List<City> findCitiesByNameAndCountry(String name, Country country);

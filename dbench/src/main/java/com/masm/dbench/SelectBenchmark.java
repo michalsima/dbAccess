@@ -52,4 +52,11 @@ public class SelectBenchmark {
 		log.info("Got " + capitals + " capitals for " + countries.size() + " countries.");
 	}
 
+	public void fechtAllCities(String orderBy, boolean asc) {
+
+		List<City> cities = cityDAO.findCities(orderBy, asc);
+
+		log.info("Got " + cities.size() + " cities ordered by " + orderBy);
+	}
+
 }

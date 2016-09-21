@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS city (
   ID INT(11) NOT NULL AUTO_INCREMENT,
   Name CHAR(35) NOT NULL,
   CountryCode CHAR(3) NOT NULL,
-  District CHAR(20) NOT NULL,
+  District CHAR(25) NOT NULL,
   Population INT(11) NOT NULL,
   PRIMARY KEY (ID),
   CONSTRAINT city_ibfk_1 FOREIGN KEY (CountryCode) REFERENCES country (Code)

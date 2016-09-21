@@ -91,7 +91,7 @@ public class CountryDAOImpl implements CountryDAO {
 			country.setCode2(rs.getString("Code2"));
 			country.setName(rs.getString("Name"));
 			country.setContinent(rs.getString("Continent"));
-			country.setRegion(rs.getString("REgion"));
+			country.setRegion(rs.getString("Region"));
 			country.setSurfaceArea(rs.getDouble("SurfaceArea"));
 			country.setIndepYear(rs.getShort("IndepYear"));
 			country.setPopulation(rs.getInt("Population"));

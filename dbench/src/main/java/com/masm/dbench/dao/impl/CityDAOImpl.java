@@ -71,6 +71,14 @@ public class CityDAOImpl implements CityDAO {
 		return result;
 	}
 
+	public List<City> findCities(String orderBy, boolean asc) {
+
+		String sql = "SELECT * FROM " + CITY_TABLE + " ORDER BY " + orderBy + (asc ? " asc" : " desc");
+		List<City> result = namedParameterJdbcTemplate.query(sql, new CityMapper());
+
+		return result;
+	}
+
 	public List<City> findCitiesByNameAndCountry(String name, Country country) {
 
 		Map<String, Object> params = new HashMap<String, Object>();

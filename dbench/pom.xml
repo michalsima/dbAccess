@@ -84,8 +84,7 @@
 			<artifactId>skb-asciitable</artifactId>
 			<version>${ascii.version}</version>
 		</dependency>
-
-
+		
 	</dependencies>
 
 </project>

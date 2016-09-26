@@ -8,15 +8,20 @@
 
 	<!-- ORACLE DB -->
 
-	<bean id="dataSourceOracle" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
+	<bean id="dataSourceOracle" class="oracle.jdbc.pool.OracleDataSource"
+		destroy-method="close">
 		<property name="URL" value="jdbc:oracle:thin:@localhost:1521:XE" />
 		<property name="user" value="dbench" />
 		<property name="password" value="test" />
-        <property name="connectionCachingEnabled" value="true"/> 
+		<property name="connectionCachingEnabled" value="true" />
 	</bean>
 
-	<bean id="jdbcTemplateOracle"
+	<bean id="namedJdbcTemplateOracle"
 		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="dataSourceOracle" />
+	</bean>
+
+	<bean id="jdbcTemplateOracle" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg ref="dataSourceOracle" />
 	</bean>
 

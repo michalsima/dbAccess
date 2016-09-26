@@ -6,4 +6,7 @@ public abstract class Constants {
 	public static final String COUNTRY_TABLE = "DBench.Country";
 
 	public static final String COUNTRYLANGUAGE_TABLE = "DBench.CountryLanguage";
+
+	public static final int LIMIT_ALL = -1;
+
 }

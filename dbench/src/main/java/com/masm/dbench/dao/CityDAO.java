@@ -2,6 +2,7 @@ package com.masm.dbench.dao;
 
 import java.util.List;
 
+import com.masm.dbench.SQLHelper.Dialect;
 import com.masm.dbench.exceptions.CityNotFoundException;
 import com.masm.dbench.model.City;
 import com.masm.dbench.model.Country;
@@ -19,4 +20,8 @@ public interface CityDAO {
 	List<City> findCitiesByName(String name);
 
 	List<City> findCitiesByNameAndCountry(String name, Country country);
+
+	List<City> findCitiesInCountries(List<Country> coutries);
+
+	List<City> fetchTopNCitiesInRegionByCriteria(String criteria, Dialect sqlDialect, boolean reverse, int count);
 }

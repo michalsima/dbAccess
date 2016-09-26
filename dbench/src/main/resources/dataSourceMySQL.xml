@@ -22,8 +22,12 @@
 		<property name="password" value="test" />
 	</bean>
 
-	<bean id="jdbcTemplateMySQL"
+	<bean id="namedJdbcTemplateMySQL"
 		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="dataSourceMySQL" />
+	</bean>
+	
+	<bean id="jdbcTemplateMySQL" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg ref="dataSourceMySQL" />
 	</bean>
 </beans>

@@ -17,4 +17,6 @@ public interface CountryDAO {
 
 	List<Country> findCountriesByLanguage(String language);
 
+	List<Country> findCountries(String orderBy, boolean isOracle, boolean asc, int from, int to);
+
 }

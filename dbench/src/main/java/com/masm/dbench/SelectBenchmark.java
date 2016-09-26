@@ -1,12 +1,15 @@
 package com.masm.dbench;
 
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
+import com.masm.dbench.SQLHelper.Dialect;
 import com.masm.dbench.dao.CityDAO;
 import com.masm.dbench.dao.CountryDAO;
 import com.masm.dbench.model.City;
 import com.masm.dbench.model.Country;
+import com.masm.dbench.service.LanguageService;
 
 public class SelectBenchmark {
 
@@ -14,6 +17,7 @@ public class SelectBenchmark {
 
 	private CityDAO cityDAO;
 	private CountryDAO countryDAO;
+	private LanguageService languageService;
 
 	public void setCityDAO(CityDAO cityDAO) {
 		this.cityDAO = cityDAO;
@@ -21,6 +25,10 @@ public class SelectBenchmark {
 
 	public void setCountryDAO(CountryDAO countryDAO) {
 		this.countryDAO = countryDAO;
+	}
+
+	public void setLanguageService(LanguageService languageService) {
+		this.languageService = languageService;
 	}
 
 	public void fechtAllCities() {
@@ -72,6 +80,33 @@ public class SelectBenchmark {
 
 		log.info("Got " + (country != null ? "1" : "0") + " countries with code " + code);
 
+	}
+
+	public void fechtCitiesFromTopCountriesByCriteria(String criteria, boolean oracle, int limit, boolean reverse) {
+
+		List<Country> countries = countryDAO.findCountries(criteria, oracle, !reverse, 0, limit);
+
+		List<City> cities = cityDAO.findCitiesInCountries(countries);
+
+		log.info("Got " + cities.size() + " cities from top countries by " + criteria);
+
+	}
+
+	public void fetchTopNCitiesInRegionByCriteria(String criteria, Dialect dialect, int count) {
+
+		List<City> cities = cityDAO.fetchTopNCitiesInRegionByCriteria(criteria, dialect, true, count);
+
+		log.info("Got " + cities.size() + " top " + count + " cities in different regions");
+
+	}
+
+	public Map<String, String> getTopLanguagesByRegion(Dialect dialect) {
+
+		Map<String, String> langs = languageService.getMostPopularLanguageInRegions(dialect);
+
+		langs.forEach((k, v) -> System.out.println(k + " -> " + v));
+
+		return langs;
 	}
 
 }

@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.masm.dbench.SQLHelper;
 import com.masm.dbench.dao.CountryDAO;
 import com.masm.dbench.exceptions.CountryNotFoundException;
 import com.masm.dbench.model.Country;
@@ -85,6 +86,19 @@ public class CountryDAOImpl implements CountryDAO {
 		return result;
 	}
 
+	@Override
+	/* String as limit because LIMIT 0,10 does not work in Oracle */
+	public List<Country> findCountries(String orderBy, boolean isOracle, boolean asc, int from, int to) {
+
+		String sql = "SELECT c.* FROM " + COUNTRY_TABLE + " c ORDER BY " + orderBy + (asc ? " asc " : " desc ");
+
+		sql = SQLHelper.contructLimitQuery(sql, isOracle, from, to);
+
+		List<Country> result = namedParameterJdbcTemplate.query(sql, new CountryMapper());
+
+		return result;
+	}
+
 	private final class CountryMapper implements RowMapper<Country> {
 
 		@Override
@@ -111,5 +125,4 @@ public class CountryDAOImpl implements CountryDAO {
 			return country;
 		}
 	}
-
 }

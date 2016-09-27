@@ -8,65 +8,68 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	<import resource="dataSourceH2.xml" />
 	<import resource="dataSourceOracle.xml" />
 	<import resource="dataSourceMySQL.xml" />
-	
+
 	<!-- DAOs -->
-	
-	<bean id="cityDAO_H2" class="com.masm.dbench.dao.impl.CityDAOImpl" >
+
+	<bean id="cityDAO_H2" class="com.masm.dbench.dao.impl.CityDAOImpl">
 		<constructor-arg ref="namedJdbcTemplateH2" />
 	</bean>
-	
-	<bean id="cityDAO_Oracle" class="com.masm.dbench.dao.impl.CityDAOImpl" >
+
+	<bean id="cityDAO_Oracle" class="com.masm.dbench.dao.impl.CityDAOImpl">
 		<constructor-arg ref="namedJdbcTemplateOracle" />
 	</bean>
-	
-	<bean id="cityDAO_MySQL" class="com.masm.dbench.dao.impl.CityDAOImpl" >
+
+	<bean id="cityDAO_MySQL" class="com.masm.dbench.dao.impl.CityDAOImpl">
 		<constructor-arg ref="namedJdbcTemplateMySQL" />
 	</bean>
-	
-	<bean id="countryDAO_H2" class="com.masm.dbench.dao.impl.CountryDAOImpl" >
+
+	<bean id="countryDAO_H2" class="com.masm.dbench.dao.impl.CountryDAOImpl">
 		<constructor-arg ref="namedJdbcTemplateH2" />
 	</bean>
-	
-	<bean id="countryDAO_Oracle" class="com.masm.dbench.dao.impl.CountryDAOImpl" >
+
+	<bean id="countryDAO_Oracle" class="com.masm.dbench.dao.impl.CountryDAOImpl">
 		<constructor-arg ref="namedJdbcTemplateOracle" />
 	</bean>
-	
-	<bean id="countryDAO_MySQL" class="com.masm.dbench.dao.impl.CountryDAOImpl" >
+
+	<bean id="countryDAO_MySQL" class="com.masm.dbench.dao.impl.CountryDAOImpl">
 		<constructor-arg ref="namedJdbcTemplateMySQL" />
 	</bean>
-	
-	<bean id="languageService_H2" class="com.masm.dbench.service.LanguageService" >
+
+	<bean id="languageService_H2" class="com.masm.dbench.service.LanguageService">
 		<constructor-arg ref="jdbcTemplateH2" />
 	</bean>
-	
-	<bean id="languageService_Oracle" class="com.masm.dbench.service.LanguageService" >
+
+	<bean id="languageService_Oracle" class="com.masm.dbench.service.LanguageService">
 		<constructor-arg ref="jdbcTemplateOracle" />
 	</bean>
-	
-	<bean id="languageService_MySQL" class="com.masm.dbench.service.LanguageService" >
+
+	<bean id="languageService_MySQL" class="com.masm.dbench.service.LanguageService">
 		<constructor-arg ref="jdbcTemplateMySQL" />
 	</bean>
-	
+
 	<!-- BENCHMARKS -->
-	
+
 	<bean id="selectBenchmarkH2" class="com.masm.dbench.SelectBenchmark">
 		<property name="cityDAO" ref="cityDAO_H2" />
 		<property name="countryDAO" ref="countryDAO_H2" />
 		<property name="languageService" ref="languageService_H2" />
 	</bean>
-	
+
 	<bean id="selectBenchmarkOracle" class="com.masm.dbench.SelectBenchmark">
 		<property name="cityDAO" ref="cityDAO_Oracle" />
 		<property name="countryDAO" ref="countryDAO_Oracle" />
 		<property name="languageService" ref="languageService_Oracle" />
 	</bean>
-	
-		<bean id="selectBenchmarkMySQL" class="com.masm.dbench.SelectBenchmark">
+
+	<bean id="selectBenchmarkMySQL" class="com.masm.dbench.SelectBenchmark">
 		<property name="cityDAO" ref="cityDAO_MySQL" />
 		<property name="countryDAO" ref="countryDAO_MySQL" />
 		<property name="languageService" ref="languageService_MySQL" />
 	</bean>
 	
+	<bean id="hibernateBenchmark" class="com.masm.dbench.HibernateBenchmark">
+	</bean>
+
 	<import resource="aop.xml" />
 
 </beans>

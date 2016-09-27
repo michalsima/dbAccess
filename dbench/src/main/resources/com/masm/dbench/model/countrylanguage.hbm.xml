@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.masm.dbench.model.CountryLanguage" table="CountryLanguage">
+		<composite-id>
+			<key-many-to-one name="countryCode" class="com.masm.dbench.model.Country" />
+			<key-property name="language" column="Language" length="3" />
+		</composite-id>
+		<property name="isOfficial" type="string">
+			<column name="IsOfficial" length="255" not-null="true" />
+		</property>
+		<property name="percentage" type="double">
+			<column name="Percentage" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

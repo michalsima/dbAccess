@@ -2,21 +2,22 @@ package com.masm.dbench.model;
 
 public class Country {
 
-	String code;
-	String name;
-	String continent;
-	String region;
-	Double surfaceArea;
-	Short indepYear;
-	Integer population;
-	Double lifeExpectancy;
-	Double gnp;
-	Double gnpOld;
-	String localName;
-	String governmentForm;
-	String headOfState;
-	Long capitalId;
-	String code2;
+	private String code;
+	private String name;
+	private String continent;
+	private String region;
+	private Double surfaceArea;
+	private Short indepYear;
+	private Integer population;
+	private Double lifeExpectancy;
+	private Double gnp;
+	private Double gnpOld;
+	private String localName;
+	private String governmentForm;
+	private String headOfState;
+	private Long capitalId_;
+	private String code2;
+	private City capital;
 
 	public String getCode() {
 		return code;
@@ -123,11 +124,11 @@ public class Country {
 	}
 
 	public Long getCapitalId() {
-		return capitalId;
+		return capitalId_;
 	}
 
 	public void setCapitalId(Long capitalId) {
-		this.capitalId = capitalId;
+		this.capitalId_ = capitalId;
 	}
 
 	public String getCode2() {
@@ -136,6 +137,14 @@ public class Country {
 
 	public void setCode2(String code2) {
 		this.code2 = code2;
+	}
+
+	public City getCapital() {
+		return capital;
+	}
+
+	public void setCapital(City capital) {
+		this.capital = capital;
 	}
 
 }

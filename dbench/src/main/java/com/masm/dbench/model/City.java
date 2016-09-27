@@ -2,17 +2,17 @@ package com.masm.dbench.model;
 
 public class City {
 
-	Long id;
-	String name;
-	String countryCode;
-	String district;
-	Integer population;
+	private Long id;
+	private String name;
+	private String countryCode;
+	private String district;
+	private Integer population;
 
-	public Long getID() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setID(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

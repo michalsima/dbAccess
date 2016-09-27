@@ -10,7 +10,7 @@ import com.masm.dbench.TableHelper;
 @Aspect
 public class DataAccessProfiler {
 
-	@Pointcut("execution(* com.masm.dbench.*Benchmark.*(..))")
+	@Pointcut("execution(* com.masm.dbench.Benchmark.*(..))")
 	public void businessMethods() {
 	}
 

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.masm.dbench.model.Country" table="Country">
+		<id name="code" type="string">
+			<column name="Code" length="3" not-null="true" />
+		</id>
+		<property name="name" type="string">
+			<column name="Name" length="52" not-null="true" />
+		</property>
+		<property name="continent" type="string">
+			<column name="Continent" length="255" not-null="true" />
+		</property>
+		<property name="region" type="string">
+			<column name="Region" length="26" not-null="true" />
+		</property>
+		<property name="surfaceArea" type="double">
+			<column name="SurfaceArea" not-null="true" />
+		</property>
+		<property name="indepYear" type="short">
+			<column name="IndepYear" />
+		</property>
+		<property name="lifeExpectancy" type="double">
+			<column name="LifeExpectancy" not-null="true" />
+		</property>
+		<property name="gnp" type="double">
+			<column name="GNP"  />
+		</property>
+		<property name="gnpOld" type="double">
+			<column name="GNPOld"  />
+		</property>
+		<property name="localName" type="string">
+			<column name="LocalName" length="46" not-null="true" />
+		</property>
+		<property name="governmentForm" type="string">
+			<column name="GovernmentForm" length="45" not-null="true" />
+		</property>
+		<property name="headOfState" type="string">
+			<column name="HeadOfState" length="60" not-null="true" />
+		</property>
+				
+		<many-to-one name="capital" column="Capital" class="com.masm.dbench.model.City"></many-to-one>
+        
+	</class>
+</hibernate-mapping>

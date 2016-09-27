@@ -165,7 +165,7 @@ public class CityDAOImpl implements CityDAO {
 		public City mapRow(ResultSet rs, int rowNum) throws SQLException {
 			City city = new City();
 
-			city.setID(rs.getLong("ID"));
+			city.setId(rs.getLong("ID"));
 			city.setName(rs.getString("Name"));
 			city.setCountryCode(rs.getString("CountryCode"));
 			city.setDistrict(rs.getString("District"));

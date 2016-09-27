@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.masm.dbench.model.City" table="City">
+		<id name="id" type="long">
+			<column name="ID"/>
+			<generator class="identity" />
+		</id>
+		<property name="name" type="string">
+			<column name="Name" length="35" not-null="true" />
+		</property>
+		<property name="countryCode" type="string">
+			<column name="CountryCode" length="3" not-null="true" />
+		</property>
+		<property name="district" type="string">
+			<column name="District" length="25" not-null="true" />
+		</property>
+		<property name="population" type="int">
+			<column name="Population" />
+		</property>
+	</class>
+</hibernate-mapping>

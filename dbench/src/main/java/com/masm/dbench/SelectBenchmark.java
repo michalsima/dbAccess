@@ -11,7 +11,7 @@ import com.masm.dbench.model.City;
 import com.masm.dbench.model.Country;
 import com.masm.dbench.service.LanguageService;
 
-public class SelectBenchmark {
+public class SelectBenchmark implements Benchmark {
 
 	static Logger log = Logger.getLogger(SelectBenchmark.class.getName());
 

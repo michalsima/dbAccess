@@ -49,6 +49,18 @@
 			<version>${spring.version}</version>
 		</dependency>
 
+		<!-- HIBERNATE -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.0.9.Final</version>
+		</dependency>
+
 		<!-- Spring JDBC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -84,7 +96,7 @@
 			<artifactId>skb-asciitable</artifactId>
 			<version>${ascii.version}</version>
 		</dependency>
-		
+
 	</dependencies>
 
 </project>

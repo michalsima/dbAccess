@@ -7,7 +7,7 @@ import com.masm.dbench.SQLHelper.Dialect;
 
 public class Application {
 
-	private static final int ITERATIONS = 1;
+	private static final int ITERATIONS = 100;
 
 	public static void main(String[] args) {
 
@@ -79,7 +79,7 @@ public class Application {
 			selectBenchmarkH2.fechtCitiesFromTopCountriesByCriteria("SurfaceArea", false, 10, true);
 			selectBenchmarkOracle.fechtCitiesFromTopCountriesByCriteria("SurfaceArea", true, 10, true);
 			selectBenchmarkMySQL.fechtCitiesFromTopCountriesByCriteria("SurfaceArea", false, 10, true);
-			hibernateBenchmark.fechtCitiesFromTopCountriesByCriteria("SurfaceArea", false, 10, true);
+			hibernateBenchmark.fechtCitiesFromTopCountriesByCriteria("surfaceArea", false, 10, true);
 
 			System.out.println("*********** Get top 3 cities from every Region *************");
 			TableHelper.addValue2Table("Top 3 cities from every Region");
@@ -87,7 +87,7 @@ public class Application {
 			selectBenchmarkH2.fetchTopNCitiesInRegionByCriteria("Population", Dialect.H2, 3);
 			selectBenchmarkOracle.fetchTopNCitiesInRegionByCriteria("Population", Dialect.ORACLE, 3);
 			selectBenchmarkMySQL.fetchTopNCitiesInRegionByCriteria("Population", Dialect.MYSQL, 3);
-			hibernateBenchmark.fetchTopNCitiesInRegionByCriteria("population", Dialect.MYSQL, 3);
+			hibernateBenchmark.fetchTopNCitiesInRegionByCriteria("Population", Dialect.MYSQL, 3);
 
 			System.out.println("*********** Get most popular languages from every Region *************");
 			TableHelper.addValue2Table("Top languages for Region");

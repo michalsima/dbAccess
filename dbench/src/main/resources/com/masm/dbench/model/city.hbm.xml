@@ -19,5 +19,6 @@
 		<property name="population" type="int">
 			<column name="Population" />
 		</property>
+
 	</class>
 </hibernate-mapping>

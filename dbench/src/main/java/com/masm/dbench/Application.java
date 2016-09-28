@@ -7,7 +7,7 @@ import com.masm.dbench.SQLHelper.Dialect;
 
 public class Application {
 
-	private static final int ITERATIONS = 100;
+	private static final int ITERATIONS = 10;
 
 	public static void main(String[] args) {
 
@@ -19,7 +19,7 @@ public class Application {
 		Benchmark selectBenchmarkMySQL = (Benchmark) context.getBean("selectBenchmarkMySQL");
 		Benchmark hibernateBenchmark = (Benchmark) context.getBean("hibernateBenchmark");
 
-		TableHelper.setupTable(5, 9);
+		TableHelper.setupTable(5, 9, ITERATIONS);
 
 		for (int i = 0; i < ITERATIONS; i++) {
 

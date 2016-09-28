@@ -41,5 +41,10 @@ CREATE TABLE IF NOT EXISTS countrylanguage (
   CONSTRAINT countryLanguage_ibfk_1 FOREIGN KEY (CountryCode) REFERENCES country (Code)
 );
 
+CREATE INDEX city_cc ON DBENCH.CITY(CountryCode);
+CREATE INDEX city_population ON DBENCH.CITY(Population);
 
-
+CREATE INDEX country_capital ON DBENCH.COUNTRY(Capital);
+CREATE INDEX country_surface ON DBENCH.COUNTRY(SurfaceArea);
+CREATE INDEX country_population ON DBENCH.COUNTRY(Population);
+CREATE INDEX country_region ON DBENCH.COUNTRY(Region);

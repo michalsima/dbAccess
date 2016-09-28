@@ -23,7 +23,7 @@ public class DataAccessProfiler {
 		Object output = pjp.proceed();
 		long elapsedTime = System.currentTimeMillis() - start;
 
-		TableHelper.addIterationValue2Table(new Long(elapsedTime));
+		TableHelper.addIterationValue2Table(new Double(elapsedTime));
 		System.out.println("############# STOP - execution time: " + elapsedTime + " milliseconds.");
 		return output;
 	}
